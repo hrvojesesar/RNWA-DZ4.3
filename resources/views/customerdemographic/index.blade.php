@@ -19,19 +19,19 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('region.index') }}">Region</a>
             </li>
-              <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('territory.index') }}">Territory</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+                <a class="nav-link" href="{{ route('products.index') }}">Product</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
             </li>
     </div>
@@ -40,10 +40,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Shippers List</h2>
+                <h2>Customer Demographics List</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-primary" href="{{ route('shipper.create') }}">Add new Shipper</a>
+                <a class="btn btn-primary" href="{{ route('customerdemographic.create') }}">Add new Customer Demographics</a>
             </div>
         </div>
     </div>
@@ -55,21 +55,19 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Shipper ID</th>
-            <th>Company Name</th>
-            <th>Phone</th>
+            <th>Customer Demographics ID</th>
+            <th>Customer Description</th>
             <th width="230px">Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($shippers as $shipper)
+        @foreach ($customerdemographics as $customerdemographic)
             <tr>
-                <td>{{ $shipper->ShipperID }}</td>
-                <td>{{ $shipper->CompanyName }}</td>
-                <td>{{ $shipper->Phone }}</td>
+                <td>{{ $customerdemographic->CustomerTypeID }}</td>
+                <td>{{ $customerdemographic->CustomerDesc }}</td>
                 <td>
-                    <form action="{{ route('shipper.destroy',$shipper->ShipperID) }}" method="Post">
-                        <a class="btn btn-primary" href="{{ route('shipper.edit',$shipper->ShipperID) }}">Edit</a>
+                    <form action="{{ route('customerdemographic.destroy',$customerdemographic->CustomerTypeID) }}" method="Post">
+                        <a class="btn btn-primary"href="{{ route('customerdemographic.edit',$customerdemographic->CustomerTypeID) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

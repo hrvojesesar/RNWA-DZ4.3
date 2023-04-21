@@ -6,6 +6,7 @@ use App\Http\Controllers\TerritoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShipperController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CustomerDemographicController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +27,4 @@ Route::resource('territory', TerritoryController::class);
 Route::resource('products', ProductController::class);
 Route::resource('shipper', ShipperController::class);
 Route::resource('order', OrderController::class);
+Route::resource('customerdemographic', CustomerDemographicController::class);

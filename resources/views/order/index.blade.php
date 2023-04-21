@@ -31,6 +31,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
+            </li>
     </div>
 </nav>
 <div class="container mt-2">

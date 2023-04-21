@@ -34,6 +34,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
+            </li>
     </div>
 </nav>
 <div class="container mt-2">
@@ -52,7 +55,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('order.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">

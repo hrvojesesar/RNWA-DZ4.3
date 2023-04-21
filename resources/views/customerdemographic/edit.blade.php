@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Edit Shipper</title>
+    <title>Edit Customer Demographic</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -16,7 +16,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -28,7 +28,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('products.index') }}">Product</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
             <li class="nav-item">
@@ -37,17 +37,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
             </li>
-            
     </div>
 </nav>
 <div class="container mt-2">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Shipper</h2>
+                <h2>Edit Customer Demographic</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('shipper.index') }}" enctype="multipart/form-data">
+                <a class="btn btn-primary" href="{{ route('customerdemographic.index') }}" enctype="multipart/form-data">
                     Back</a>
             </div>
         </div>
@@ -57,36 +56,26 @@
             {{ session('status') }}
         </div>
     @endif
-    <form action="{{ route('shipper.update', $shipper->ShipperID) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('customerdemographic.update',$customerdemographic->CustomerTypeID) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Shipper ID:</strong>
-                    <input type="text" name="ShipperID" value="{{ $shipper->ShipperID }}" class="form-control"
-                           placeholder="Shipper ID">
-                    @error('ShipperID')
+                    <strong>Customer Type ID:</strong>
+                    <input type="text" name="CustomerTypeID" value="{{ $customerdemographic->CustomerTypeID }}" class="form-control"
+                           placeholder="Customer Type ID">
+                    @error('CustomerTypeID')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Company name:</strong>
-                    <input type="text" name="CompanyName" value="{{ $shipper->CompanyName }}"
-                           class="form-control" placeholder="Company Name">
-                    @error('CompanyName')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Phone:</strong>
-                    <input type="text" name="Phone" value="{{ $shipper->Phone }}" class="form-control"
-                           placeholder="Phone">
-                    @error('Phone')
+                    <strong>Customer Description:</strong>
+                    <input type="text" name="CustomerDesc" value="{{ $customerdemographic->CustomerDesc }}"
+                           class="form-control" placeholder="Customer Description">
+                    @error('CustomerDesc')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
