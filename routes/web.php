@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TerritoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShipperController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +23,4 @@ Route::get('/', function () {
 Route::resource('region', RegionController::class);
 Route::resource('territory', TerritoryController::class);
 Route::resource('products', ProductController::class);
+Route::resource('shipper', ShipperController::class);

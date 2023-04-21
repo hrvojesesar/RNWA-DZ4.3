@@ -19,13 +19,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('region.index') }}">Region</a>
             </li>
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="{{ route('territory.index') }}">Territory</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('products.index') }}">Products</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
     </div>
@@ -34,10 +34,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Territories List</h2>
+                <h2>Shippers List</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-primary" href="{{ route('territory.create') }}">Add new Territory</a>
+                <a class="btn btn-primary" href="{{ route('shipper.create') }}">Add new Shipper</a>
             </div>
         </div>
     </div>
@@ -49,21 +49,21 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Territory ID</th>
-            <th>Territory Description</th>
-            <th>Region ID</th>
+            <th>Shipper ID</th>
+            <th>Company Name</th>
+            <th>Phone</th>
             <th width="230px">Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($territories as $territory)
+        @foreach ($shippers as $shipper)
             <tr>
-                <td>{{ $territory->TerritoryID }}</td>
-                <td>{{ $territory->TerritoryDescription }}</td>
-                <td>{{ $territory->RegionID }}</td>
+                <td>{{ $shipper->ShipperID }}</td>
+                <td>{{ $shipper->CompanyName }}</td>
+                <td>{{ $shipper->Phone }}</td>
                 <td>
-                    <form action="{{ route('territory.destroy',$territory->TerritoryID) }}" method="Post">
-                        <a class="btn btn-primary" href="{{ route('territory.edit',$territory->TerritoryID) }}">Edit</a>
+                    <form action="{{ route('shipper.destroy',$shipper->ShipperID) }}" method="Post">
+                        <a class="btn btn-primary" href="{{ route('shipper.edit',$shipper->ShipperID) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

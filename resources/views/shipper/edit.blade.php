@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Add city</title>
+    <title>Edit Shipper</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -16,7 +16,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -26,9 +26,9 @@
                 <a class="nav-link" href="{{ route('territory.index') }}">Territory</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+                <a class="nav-link" href="{{ route('products.index') }}">Product</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
     </div>
@@ -36,11 +36,12 @@
 <div class="container mt-2">
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left mb-2">
-                <h2>Add Territory</h2>
+            <div class="pull-left">
+                <h2>Edit Shipper</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('territory.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('shipper.index') }}" enctype="multipart/form-data">
+                    Back</a>
             </div>
         </div>
     </div>
@@ -49,32 +50,36 @@
             {{ session('status') }}
         </div>
     @endif
-    <form action="{{ route('territory.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('shipper.update', $shipper->ShipperID) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Territory ID:</strong>
-                    <input type="text" name="TerritoryID" class="form-control" placeholder="Territory ID">
-                    @error('TerritoryID')
+                    <strong>Shipper ID:</strong>
+                    <input type="text" name="ShipperID" value="{{ $shipper->ShipperID }}" class="form-control"
+                           placeholder="Shipper ID">
+                    @error('ShipperID')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Territory Description:</strong>
-                    <input type="text" name="TerritoryDescription" class="form-control" placeholder="Territory Description">
-                    @error('TerritoryDescription')
+                    <strong>Company name:</strong>
+                    <input type="text" name="CompanyName" value="{{ $shipper->CompanyName }}"
+                           class="form-control" placeholder="Company Name">
+                    @error('CompanyName')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Region ID:</strong>
-                    <input type="text" name="RegionID" class="form-control" placeholder="Region ID">
-                    @error('RegionID')
+                    <strong>Phone:</strong>
+                    <input type="text" name="Phone" value="{{ $shipper->Phone }}" class="form-control"
+                           placeholder="Phone">
+                    @error('Phone')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -84,5 +89,4 @@
     </form>
 </div>
 </body>
-
 </html>
