@@ -31,6 +31,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
+            </li>
     </div>
 </nav>
 <div class="container mt-2">

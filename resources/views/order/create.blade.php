@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Edit Product</title>
+    <title>Add city</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -39,12 +39,11 @@
 <div class="container mt-2">
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Product</h2>
+            <div class="pull-left mb-2">
+                <h2>Add Order</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}" enctype="multipart/form-data">
-                    Back</a>
+                <a class="btn btn-primary" href="{{ route('order.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -53,106 +52,130 @@
             {{ session('status') }}
         </div>
     @endif
-    <form action="{{ route('products.update',$product->ProductID) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                   <strong>Product ID:</strong>
-                    <input type="text" name="ProductID" value="{{ $product->ProductID }}" class="form-control"
-                           placeholder="Product ID">
-                    @error('ProductID')
+                    <strong>Order ID:</strong>
+                    <input type="text" name="OrderID" class="form-control" placeholder="Order ID">
+                    @error('OrderID')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Product Name:</strong>
-                    <input type="text" name="ProductName" value="{{ $product->ProductName }}" class="form-control"
-                           placeholder="Product Name">
-                    @error('ProductName')
+                    <strong>Customer ID:</strong>
+                    <input type="text" name="CustomerID" class="form-control" placeholder="Customer ID">
+                    @error('CustomerID')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Supplier ID:</strong>
-                    <input type="text" name="SupplierID" value="{{ $product->SupplierID }}" class="form-control"
-                           placeholder="Supplier ID">
-                    @error('SupplierID')
+                    <strong>Employee ID:</strong>
+                    <input type="text" name="EmployeeID" class="form-control" placeholder="Employee ID">
+                    @error('EmployeeID')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Category ID:</strong>
-                    <input type="text" name="CategoryID" value="{{ $product->CategoryID }}" class="form-control"
-                           placeholder="Category ID">
-                    @error('CategoryID')
+                    <strong>Order Date:</strong>
+                    <input type="text" name="OrderDate" class="form-control" placeholder="Order Date">
+                    @error('OrderDate')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Quantity Per Unit:</strong>
-                    <input type="text" name="QuantityPerUnit" value="{{ $product->QuantityPerUnit }}" class="form-control"
-                           placeholder="Quantity Per Unit">
-                    @error('QuantityPerUnit')
+                    <strong>Required Date:</strong>
+                    <input type="text" name="RequiredDate" class="form-control" placeholder="Required Date">
+                    @error('RequiredDate')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div> <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Shipped Date:</strong>
+                    <input type="text" name="ShippedDate" class="form-control" placeholder="Shipped Date">
+                    @error('ShippedDate')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Unit Price:</strong>
-                    <input type="text" name="UnitPrice" value="{{ $product->UnitPrice }}" class="form-control"
-                           placeholder="Unit Price">
-                    @error('UnitPrice')
+                    <strong>Ship Via:</strong>
+                    <input type="text" name="ShipVia" class="form-control" placeholder="Ship Via">
+                    @error('ShipVia')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Units In Stock:</strong>
-                    <input type="text" name="UnitsInStock" value="{{ $product->UnitsInStock }}" class="form-control"
-                           placeholder="Units In Stock">
-                    @error('UnitsInStock')
+                    <strong>Freight:</strong>
+                    <input type="text" name="Freight" class="form-control" placeholder="Freight">
+                    @error('Freight')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Units On Order:</strong>
-                    <input type="text" name="UnitsOnOrder" value="{{ $product->UnitsOnOrder }}" class="form-control"
-                           placeholder="Units On Order">
-                    @error('UnitsOnOrder')
+                    <strong>Ship Name:</strong>
+                    <input type="text" name="ShipName" class="form-control" placeholder="Ship Name">
+                    @error('ShipName')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Reorder Level:</strong>
-                    <input type="text" name="ReorderLevel" value="{{ $product->ReorderLevel }}" class="form-control"
-                           placeholder="Reorder Level">
-                    @error('ReorderLevel')
+                    <strong>Ship Address:</strong>
+                    <input type="text" name="ShipAddress" class="form-control" placeholder="Ship Address">
+                    @error('ShipAddress')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Discontinued:</strong>
-                    <input type="text" name="Discontinued" value="{{ $product->Discontinued }}" class="form-control"
-                           placeholder="Discontinued">
-                    @error('Discontinued')
+                    <strong>Ship City:</strong>
+                    <input type="text" name="ShipCity" class="form-control" placeholder="Ship City">
+                    @error('ShipCity')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Ship Region:</strong>
+                    <input type="text" name="ShipRegion" class="form-control" placeholder="Ship Region">
+                    @error('ShipRegion')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Ship PostalCode:</strong>
+                    <input type="text" name="ShipPostalCode" class="form-control" placeholder="Ship PostalCode">
+                    @error('ShipPostalCode')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Ship Country:</strong>
+                    <input type="text" name="ShipCountry" class="form-control" placeholder="Ship Country">
+                    @error('ShipCountry')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -162,4 +185,5 @@
     </form>
 </div>
 </body>
+
 </html>

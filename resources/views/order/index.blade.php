@@ -13,10 +13,10 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('region.index') }}">Region</a>
             </li>
             <li class="nav-item">
@@ -28,7 +28,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
             </li>
     </div>
@@ -37,10 +37,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Regions List</h2>
+                <h2>Orders List</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-primary" href="{{ route('region.create') }}">Add new Region</a>
+                <a class="btn btn-primary" href="{{ route('order.create') }}">Add new Order</a>
             </div>
         </div>
     </div>
@@ -52,19 +52,43 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Region ID</th>
-            <th>Region Description</th>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Employee ID</th>
+            <th>Order Date</th>
+            <th>Required Date</th>
+            <th>Shipped Date</th>
+            <th>Ship Via</th>
+            <th>Freight</th>
+            <th>Ship Name</th>
+            <th>Ship Address</th>
+            <th>Ship City</th>
+            <th>Ship Region</th>
+            <th>Ship PostalCode</th>
+            <th>Ship Country</th>
             <th width="230px">Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($regions as $region)
+        @foreach ($orders as $order)
             <tr>
-                <td>{{ $region->RegionID }}</td>
-                <td>{{ $region->RegionDescription }}</td>
+                <td>{{ $order->OrderID }}</td>
+                <td>{{ $order->CustomerID }}</td>
+                <td>{{ $order->EmployeeID }}</td>
+                <td>{{ $order->OrderDate }}</td>
+                <td>{{ $order->RequiredDate }}</td>
+                <td>{{ $order->ShippedDate }}</td>
+                <td>{{ $order->ShipVia }}</td>
+                <td>{{ $order->Freight }}</td>
+                <td>{{ $order->ShipName }}</td>
+                <td>{{ $order->ShipAddress }}</td>
+                <td>{{ $order->ShipCity }}</td>
+                <td>{{ $order->ShipRegion }}</td>
+                <td>{{ $order->ShipPostalCode }}</td>
+                <td>{{ $order->ShipCountry }}</td>
                 <td>
-                    <form action="{{ route('region.destroy',$region->RegionID) }}" method="Post">
-                        <a class="btn btn-primary"href="{{ route('region.edit',$region->RegionID) }}">Edit</a>
+                    <form action="{{ route('order.destroy',$order->OrderID) }}" method="Post">
+                        <a class="btn btn-primary"href="{{ route('order.edit',$order->OrderID) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
