@@ -17,6 +17,12 @@ class Territory extends Model
         'RegionID'
     ];
 
+    protected $casts = [
+        'TerritoryID' => 'string',
+        'TerritoryDescription' => 'string',
+        'RegionID' => 'integer'
+    ];
+
 
     public function region()
     {

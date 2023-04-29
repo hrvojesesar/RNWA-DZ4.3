@@ -34,13 +34,22 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('suppliers.index') }}">Suppliers</a>
+            </li>
     </div>
 </nav>
 <div class="container mt-2">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Customer Demographics List</h2>
+                <h2>Customer Dempgraphic List</h2>
             </div>
             <div class="pull-right mb-2">
                 <a class="btn btn-primary" href="{{ route('customerdemographic.create') }}">Add new Customer Demographics</a>

@@ -7,6 +7,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShipperController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CustomerDemographicController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SupplierController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +31,6 @@ Route::resource('products', ProductController::class);
 Route::resource('shipper', ShipperController::class);
 Route::resource('order', OrderController::class);
 Route::resource('customerdemographic', CustomerDemographicController::class);
+Route::resource('customers', CustomerController::class);
+Route::resource('category', CategoryController::class);
+Route::resource('suppliers', SupplierController::class);
