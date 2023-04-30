@@ -49,6 +49,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('orderDetails.index') }}">Order Details</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('employee.index') }}">Employees</a>
+            </li>
     </div>
 </nav>
 <div class="container mt-2">

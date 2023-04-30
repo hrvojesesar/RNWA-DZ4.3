@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +37,4 @@ Route::resource('customers', CustomerController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('suppliers', SupplierController::class);
 Route::resource('orderDetails', OrderDetailController::class);
+Route::resource('employee', EmployeeController::class);

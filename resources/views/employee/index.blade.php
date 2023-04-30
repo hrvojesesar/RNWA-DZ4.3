@@ -13,7 +13,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -28,10 +28,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
             </li>
             <li class="nav-item">
@@ -55,10 +55,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Categories List</h2>
+                <h2>Employees List</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-primary" href="{{ route('category.create') }}">Add new Category</a>
+                <a class="btn btn-primary" href="{{ route('employee.create') }}">Add new Employee</a>
             </div>
         </div>
     </div>
@@ -70,23 +70,53 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <td>Category ID</td>
-            <td>Category Name</td>
-            <td>Description</td>
-            <td>Picture</td>
+<th width="80px">EmployeeID</th>
+<th width="230px">LastName</th>
+<th width="230px">FirstName</th>
+<th width="230px">Title</th>
+<th width="230px">TitleOfCourtesy</th>
+<th width="230px">BirthDate</th>
+<th width="230px">HireDate</th>
+<th width="230px">Address</th>
+<th width="230px">City</th>
+<th width="230px">Region</th>
+<th width="230px">PostalCode</th>
+<th width="230px">Country</th>
+<th width="230px">HomePhone</th>
+<th width="230px">Extension</th>
+<th width="230px">Photo</th>
+<th width="230px">Notes</th>
+<th width="230px">ReportsTo</th>
+<th width="230px">PhotoPath</th>
+            <th width="230px">Salary</th>
             <th width="230px">Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach ($categories as $category)
+        @foreach ($employees as $employee)
             <tr>
-                <td>{{ $category->CategoryID }}</td>
-                <td>{{ $category->CategoryName }}</td>
-                <td>{{ $category->Description }}</td>
-                <td>{{ $category->Picture }}</td>
+                <td>{{ $employee->EmployeeID }}</td>
+<td>{{ $employee->LastName }}</td>
+<td>{{ $employee->FirstName }}</td>
+<td>{{ $employee->Title }}</td>
+<td>{{ $employee->TitleOfCourtesy }}</td>
+<td>{{ $employee->BirthDate }}</td>
+<td>{{ $employee->HireDate }}</td>
+<td>{{ $employee->Address }}</td>
+<td>{{ $employee->City }}</td>
+<td>{{ $employee->Region }}</td>
+<td>{{ $employee->PostalCode }}</td>
+<td>{{ $employee->Country }}</td>
+<td>{{ $employee->HomePhone }}</td>
+<td>{{ $employee->Extension }}</td>
+<td>{{ $employee->Photo }}</td>
+<td>{{ $employee->Notes }}</td>
+<td>{{ $employee->ReportsTo }}</td>
+<td>{{ $employee->PhotoPath }}</td>
+                <td>{{ $employee->Salary }}</td>
                 <td>
-                    <form action="{{ route('category.destroy',$category->CategoryID) }}" method="Post">
-                        <a class="btn btn-primary"href="{{ route('category.edit',$category->CategoryID) }}">Edit</a>
+                    <form action="{{ route('employee.destroy',$employee->EmployeeID) }}" method="Post">
+                        <a class="btn btn-primary" href="{{ route('employee.edit',$employee->EmployeeID) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Add Customer</title>
+    <title>Add Employee</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -58,10 +58,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left mb-2">
-                <h2>Add Customer</h2>
+                <h2>Add Employee</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('customers.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('employee.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -70,45 +70,72 @@
             {{ session('status') }}
         </div>
     @endif
-    <form action="{{ route('customers.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('employee.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Customer ID:</strong>
-                    <input type="text" name="CustomerID" class="form-control" placeholder="Customer ID">
-                    @error('CustomerID')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                <strong>Employee ID:</strong>
+                <input type="text" name="EmployeeID" class="form-control" placeholder="Employee ID">
+                @error('EmployeeID')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Company Name:</strong>
-                    <input type="text" name="CompanyName" class="form-control" placeholder="Company Name">
-                    @error('CompanyName')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                <strong>Last Name:</strong>
+                <input type="text" name="LastName" class="form-control" placeholder="Last Name">
+                @error('LastName')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Contact Name:</strong>
-                    <input type="text" name="ContactName" class="form-control" placeholder="Contact Name">
-                    @error('ContactName')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                <strong>First Name:</strong>
+                <input type="text" name="FirstName" class="form-control" placeholder="First Name">
+                @error('FirstName')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Contact Title:</strong>
-                    <input type="text" name="ContactTitle" class="form-control" placeholder="Contact Title">
-                    @error('ContactTitle')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                <strong>Title:</strong>
+                <input type="text" name="Title" class="form-control" placeholder="Title">
+                @error('Title')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 </div>
             </div> <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                <strong>Title Of Courtesy:</strong>
+                <input type="text" name="TitleOfCourtesy" class="form-control" placeholder="Title Of Courtesy">
+                @error('TitleOfCourtesy')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   <strong>Birth Date:</strong>
+                     <input type="date" name="BirthDate" class="form-control" placeholder="Birth Date">
+                        @error('BirthDate')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                        <strong>Hire Date:</strong>
+                        <input type="date" name="HireDate" class="form-control" placeholder="Hire Date">
+                        @error('HireDate')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Address:</strong>
                     <input type="text" name="Address" class="form-control" placeholder="Address">
@@ -155,18 +182,65 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Phone:</strong>
-                    <input type="text" name="Phone" class="form-control" placeholder="Phone">
-                    @error('Phone')
+
+                                                        <strong>Home Phone:</strong>
+                                                        <input type="text" name="HomePhone" class="form-control" placeholder="Home Phone">
+                                                        @error('HomePhone')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+
+                                                                <strong>Extension:</strong>
+                                                                <input type="text" name="Extension" class="form-control" placeholder="Extension">
+                                                                @error('Extension')
+                                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                     <strong>Photo:</strong>
+                        <input type="text" name="Photo" class="form-control" placeholder="Photo">
+                        @error('Photo')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Notes:</strong>
+                    <input type="text" name="Notes" class="form-control" placeholder="Notes">
+                    @error('Notes')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Fax:</strong>
-                    <input type="text" name="Fax" class="form-control" placeholder="Fax">
-                    @error('Fax')
+                    <strong>Reports To:</strong>
+                    <input type="text" name="ReportsTo" class="form-control" placeholder="Reports To">
+                    @error('ReportsTo')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Photo Path:</strong>
+                    <input type="text" name="PhotoPath" class="form-control" placeholder="Photo Path">
+                    @error('PhotoPath')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Salary:</strong>
+                    <input type="text" name="Salary" class="form-control" placeholder="Salary">
+                    @error('Salary')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
