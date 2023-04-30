@@ -13,6 +13,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CustomerCustomerDemoController;
+use App\Http\Controllers\EmployeeTerritoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +41,4 @@ Route::resource('suppliers', SupplierController::class);
 Route::resource('orderDetails', OrderDetailController::class);
 Route::resource('employee', EmployeeController::class);
 Route::resource('customer_customer_demos', CustomerCustomerDemoController::class);
+Route::resource('employee_territories', EmployeeTerritoryController::class);

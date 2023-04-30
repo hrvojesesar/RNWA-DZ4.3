@@ -23,5 +23,26 @@ class Order extends Model
 
     public $timestamps = false;
 
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'CustomerID', 'CustomerID');
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'EmployeeID', 'EmployeeID');
+    }
+
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderDetail::class, 'OrderID', 'OrderID');
+    }
+
+    public function shipper()
+    {
+        return $this->belongsTo(Shipper::class, 'ShipVia', 'ShipperID');
+    }
+
+
     use HasFactory;
 }

@@ -19,13 +19,10 @@ class CustomerDemographic extends Model
     ];
 
 
-    /*
-      public function territories()
-        {
-            return $this->hasMany(Territory::class);
-        }
-
-    */    
+    public function customerCustomerDemos()
+    {
+        return $this->hasMany(CustomerCustomerDemo::class, 'CustomerTypeID', 'CustomerTypeID');
+    }
 
     use HasFactory;
 }

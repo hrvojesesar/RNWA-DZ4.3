@@ -61,9 +61,9 @@ class Employee extends Model
         return $this->hasMany(Order::class, 'EmployeeID', 'EmployeeID');
     }
 
-    public function territories()
+    public function employeeTerritories()
     {
-        return $this->belongsToMany(Territory::class, 'employeeterritories', 'EmployeeID', 'TerritoryID');
+        return $this->hasMany(EmployeeTerritory::class, 'EmployeeID', 'EmployeeID');
     }
     public function employees()
     {

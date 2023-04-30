@@ -52,5 +52,7 @@ class Supplier extends Model
 
 
 
+
+
     use HasFactory;
 }

@@ -29,6 +29,11 @@ class Territory extends Model
         return $this->belongsTo(Region::class);
     }
 
+    public function employeeTerritories()
+    {
+        return $this->hasMany(EmployeeTerritory::class, 'TerritoryID', 'TerritoryID');
+    }
+
 
     use HasFactory;
 

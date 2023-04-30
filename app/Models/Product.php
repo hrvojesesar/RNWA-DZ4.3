@@ -22,5 +22,23 @@ class Product extends Model
 
     public $timestamps = false;
 
+    public $incrementing = true;
+
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderDetail::class, 'ProductID', 'ProductID');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'CategoryID', 'CategoryID');
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class, 'SupplierID', 'SupplierID');
+    }
+
+
     use HasFactory;
 }
