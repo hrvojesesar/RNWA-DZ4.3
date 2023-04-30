@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Add Category</title>
+    <title>Add Order Details</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -55,10 +55,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left mb-2">
-                <h2>Add Category</h2>
+                <h2>Add Order Details</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('category.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('orderDetails.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -67,35 +67,52 @@
             {{ session('status') }}
         </div>
     @endif
-    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('orderDetails.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                        <strong>Category Name:</strong>
-                        <input type="text" name="CategoryName" class="form-control" placeholder="Category Name">
-                        @error('CategoryName')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-
+                    <strong>Order ID:</strong>
+                    <input type="number" name="OrderID" class="form-control" placeholder="Order ID">
+                    @error('OrderID')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                            <strong>Description:</strong>
-                            <textarea class="form-control" style="height:150px" name="Description" placeholder="Description"></textarea>
-                            @error('Description')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                    <strong>Product ID:</strong>
+                    <input type="number" name="ProductID" class="form-control" placeholder="Product ID">
+                    @error('ProductID')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                            <strong>Picture:</strong>
-                            <input type="file" name="Picture" class="form-control" placeholder="Picture">
-                            @error('Picture')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                    <strong>Unit Price:</strong>
+                    <input type="number" name="UnitPrice" class="form-control" placeholder="Unit Price">
+                    @error('UnitPrice')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                <strong>Quantity:</strong>
+                <input type="number" name="Quantity" class="form-control" placeholder="Quantity">
+                @error('Quantity')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                <strong>Discount:</strong>
+                <input type="number" name="Discount" class="form-control" placeholder="Discount">
+                @error('Discount')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 </div>
             </div>
             <button type="submit" class="btn btn-primary ml-3">Submit</button>

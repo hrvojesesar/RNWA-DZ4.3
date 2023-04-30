@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerDemographicController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\OrderDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +35,4 @@ Route::resource('customerdemographic', CustomerDemographicController::class);
 Route::resource('customers', CustomerController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('suppliers', SupplierController::class);
+Route::resource('orderDetails', OrderDetailController::class);
