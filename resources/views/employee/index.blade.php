@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-eqiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Navbar same length as the page-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -73,28 +79,29 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+
     <table class="table table-bordered">
         <thead>
         <tr>
-<th width="80px">EmployeeID</th>
-<th width="230px">LastName</th>
-<th width="230px">FirstName</th>
-<th width="230px">Title</th>
-<th width="230px">TitleOfCourtesy</th>
-<th width="230px">BirthDate</th>
-<th width="230px">HireDate</th>
-<th width="230px">Address</th>
-<th width="230px">City</th>
-<th width="230px">Region</th>
-<th width="230px">PostalCode</th>
-<th width="230px">Country</th>
-<th width="230px">HomePhone</th>
-<th width="230px">Extension</th>
-<th width="230px">Photo</th>
-<th width="230px">Notes</th>
-<th width="230px">ReportsTo</th>
-<th width="230px">PhotoPath</th>
-            <th width="230px">Salary</th>
+<th>EmployeeID</th>
+<th>LastName</th>
+<th>FirstName</th>
+<th>Title</th>
+<th>TitleOfCourtesy</th>
+<th>BirthDate</th>
+<th>HireDate</th>
+<th>Address</th>
+<th>City</th>
+<th>Region</th>
+<th>PostalCode</th>
+<th>Country</th>
+<th>HomePhone</th>
+<th>Extension</th>
+<th>Photo</th>
+<th>Notes</th>
+<th>ReportsTo</th>
+<th>PhotoPath</th>
+            <th>Salary</th>
             <th width="230px">Action</th>
         </tr>
         </thead>

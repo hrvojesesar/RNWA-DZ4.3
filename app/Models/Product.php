@@ -13,6 +13,9 @@ class Product extends Model
 
     protected $fillable = [
         'ProductName',
+        'SupplierID',
+        'CategoryID',
+        'QuantityPerUnit',
         'UnitPrice',
         'UnitsInStock',
         'UnitsOnOrder',

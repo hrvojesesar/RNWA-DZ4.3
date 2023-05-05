@@ -24,7 +24,6 @@ class Category extends Model
         'Description' => 'string',
         'Picture' => 'string',
     ];
-
     public $timestamps = true;
 
     public $incrementing = true;
