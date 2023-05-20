@@ -90,6 +90,9 @@
                 <h2>Regions List</h2>
             </div>
             <div class="pull-right mb-2">
+                <a class="btn btn-primary" href="{{ route('region.create') }}">Add new Region</a>
+            </div>
+            <div class="pull-right mb-2">
               
                 <select id="regionSelect" class="form-control">
                     <option value="">Odaberite regiju</option>

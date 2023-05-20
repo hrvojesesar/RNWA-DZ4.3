@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-  protected $table = 'products';
+    use HasFactory;
 
-  protected $primaryKey = 'ProductID';
+    protected $table = 'products';
+
+    protected $primaryKey = 'ProductID';
 
     protected $fillable = [
         'ProductName',
@@ -25,8 +27,6 @@ class Product extends Model
 
     public $timestamps = false;
 
-    public $incrementing = true;
-
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class, 'ProductID', 'ProductID');
@@ -41,7 +41,4 @@ class Product extends Model
     {
         return $this->belongsTo(Supplier::class, 'SupplierID', 'SupplierID');
     }
-
-
-    use HasFactory;
 }

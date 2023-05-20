@@ -43,3 +43,4 @@ Route::resource('employee', EmployeeController::class);
 Route::resource('customer_customer_demos', CustomerCustomerDemoController::class);
 Route::resource('employee_territories', EmployeeTerritoryController::class);
 Route::post('/region/{id}', [RegionController::class, 'getRegion'])->name('region.get');
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');

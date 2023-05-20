@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -13,7 +14,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url('/') }}">Početna <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -22,8 +23,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('territory.index') }}">Territory</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('products.index') }}">Product</a>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ route('products.index') }}">Product</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('shipper.index') }}">Shippers</a>
@@ -34,7 +35,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('customerdemographic.index') }}">Customers Demographic</a>
             </li>
-            <li class="new-item">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
             </li>
             <li class="nav-item">
@@ -73,6 +74,9 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+    <div class="form-group">
+        <input type="text" class="form-control" id="search" placeholder="Search by Product Name">
+    </div>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -89,7 +93,7 @@
             <th width="230px">Action</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="productTable">
         @foreach ($products as $product)
             <tr>
                 <td>{{ $product->ProductID }}</td>
@@ -103,8 +107,8 @@
                 <td>{{ $product->ReorderLevel }}</td>
                 <td>{{ $product->Discontinued }}</td>
                 <td>
-                    <form action="{{ route('products.destroy',$product->ProductID) }}" method="Post">
-                        <a class="btn btn-primary"href="{{ route('products.edit',$product->ProductID) }}">Edit</a>
+                    <form action="{{ route('products.destroy', $product->ProductID) }}" method="POST">
+                        <a class="btn btn-primary" href="{{ route('products.edit', $product->ProductID) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
@@ -115,5 +119,22 @@
         </tbody>
     </table>
 </div>
+<script>
+    const searchInput = document.getElementById('search');
+    const productTable = document.getElementById('productTable');
+
+    searchInput.addEventListener('input', handleSearch);
+
+    function handleSearch() {
+        const searchText = searchInput.value.toLowerCase();
+        axios.get('/products/search', { params: { search: searchText } })
+            .then(response => {
+                productTable.innerHTML = response.data;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+</script>
 </body>
 </html>
