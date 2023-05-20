@@ -3,8 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
+
+<script>
+    $(document).ready(function() {
+    $('#regionSelect').change(function() {
+        var regionId = $(this).val();
+        $.ajax({
+            url: "{{ route('region.get', ':id') }}".replace(':id', regionId),
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                // Ovdje možete manipulirati podacima iz odgovora (response) i ažurirati vaše HTML elemente
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
+    });
+});
+</script>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Northwind</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +90,13 @@
                 <h2>Regions List</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-primary" href="{{ route('region.create') }}">Add new Region</a>
+              
+                <select id="regionSelect" class="form-control">
+                    <option value="">Odaberite regiju</option>
+                    @foreach ($regions as $region)
+                        <option value="{{ $region->RegionID }}">{{ $region->RegionDescription }}</option>
+                    @endforeach
+                 </select>
             </div>
         </div>
     </div>

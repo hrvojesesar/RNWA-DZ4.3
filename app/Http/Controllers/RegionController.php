@@ -82,4 +82,27 @@ class RegionController extends Controller
                         ->with('success','Region deleted successfully');
 
     }
+
+    public function getRegion($id)
+{
+    // Dohvat podataka o odabranoj regiji iz baze ili drugog izvora
+    $region = Region::find($id);
+
+    // Provjera je li regija pronađena
+    if (!$region) {
+        return response()->json(['error' => 'Regija nije pronađena'], 404);
+    }
+
+    // Priprema podataka za odgovor
+    $data = [
+        'region_id' => $region->RegionID,
+        'region_description' => $region->RegionDescription,
+        // Dodajte ostale relevantne atribute regije
+    ];
+
+    // Vraćanje podataka u JSON formatu
+    return response()->json($data);
+}
+
+
 }
