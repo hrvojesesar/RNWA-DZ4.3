@@ -61,7 +61,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Customer Dempgraphic List</h2>
+                <h2>Customer Demographic List</h2>
             </div>
             <div class="pull-right mb-2">
                 <a class="btn btn-primary" href="{{ route('customerdemographic.create') }}">Add new Customer Demographics</a>

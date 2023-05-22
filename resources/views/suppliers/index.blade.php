@@ -65,7 +65,7 @@
                 <h2>Suppliers List</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-primary" href="{{ route('suppliers.create') }}">Add new Category</a>
+                <a class="btn btn-primary" href="{{ route('suppliers.create') }}">Add new Supplier</a>
             </div>
         </div>
     </div>
