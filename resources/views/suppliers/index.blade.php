@@ -42,7 +42,7 @@
                 <a class="nav-link" href="{{ route('category.index') }}">Categories</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('suppliers.index') }}">Suppliers</a>
+                <a class="nav-link active" href="{{ route('suppliers.index') }}">Suppliers</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('orderDetails.index') }}">Order Details</a>
