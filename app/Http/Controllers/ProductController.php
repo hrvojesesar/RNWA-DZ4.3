@@ -70,11 +70,5 @@ class ProductController extends Controller
             ->with('success', 'Product deleted successfully');
     }
 
-    public function search(Request $request)
-{
-    $searchTerm = $request->input('searchTerm');
-    $products = Product::where('ProductName', 'LIKE', '%' . $searchTerm . '%')->get();
-    return view('products.index', compact('products'));
-}
 
 }

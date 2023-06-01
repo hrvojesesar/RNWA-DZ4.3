@@ -74,9 +74,6 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <div class="form-group">
-        <input type="text" class="form-control" id="search" placeholder="Search by Product Name">
-    </div>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -119,22 +116,5 @@
         </tbody>
     </table>
 </div>
-<script>
-    const searchInput = document.getElementById('search');
-    const productTable = document.getElementById('productTable');
-
-    searchInput.addEventListener('input', handleSearch);
-
-    function handleSearch() {
-        const searchText = searchInput.value.toLowerCase();
-        axios.get('/products/search', { params: { search: searchText } })
-            .then(response => {
-                productTable.innerHTML = response.data;
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-</script>
 </body>
 </html>

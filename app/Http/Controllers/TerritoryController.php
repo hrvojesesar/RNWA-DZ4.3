@@ -84,4 +84,52 @@ class TerritoryController extends Controller
         return redirect()->route('territory.index')
             ->with('success', 'Territory deleted successfully');
     }
+
+    function action(Request $request)
+    {
+        if($request->ajax())
+        {
+            $output = '';
+            $query = $request->get('query');
+            if($query != '') {
+                $data = Territory::where('TerritoryDescription', 'LIKE', '%' . $query . '%')->orderBy('TerritoryID', 'asc')->paginate(10);
+                    
+            } else {
+                $data = Territory::orderBy('TerritoryID','asc')->paginate(10);
+            }
+             
+            $total_row = $data->count();
+            if($total_row > 0){
+                foreach($data as $territory){
+                    $output .= '
+                <tr>
+                <td>'.$territory->TerritoryID.'</td>
+                <td>'.$territory->TerritoryDescription.'</td>
+                <td>'.$territory->RegionID.'</td>
+                <td>
+                    <form action="'.route('territory.destroy',$territory->TerritoryID).'" method="Post">
+                        <a class="btn btn-primary"href="'.route('territory.edit',$territory->TerritoryID).'">Edit</a>
+                        <input type="hidden" name="_token" value="'.csrf_token().'">
+                         <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+                
+            </tr>
+            ';
+           }
+            } else {
+                $output = '
+                <tr>
+                    <td align="center" colspan="5">No Data Found</td>
+                </tr>
+                ';
+            }
+            $data = array(
+                'table_data'  => $output,
+                'total_data'  => $total_row
+            );
+            echo json_encode($data);
+        }
+    }
 }
