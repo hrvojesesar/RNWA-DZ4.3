@@ -3,34 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-
-<script>
-    $(document).ready(function() {
-    $('#regionSelect').change(function() {
-        var regionId = $(this).val();
-        $.ajax({
-            url: "{{ route('region.get', ':id') }}".replace(':id', regionId),
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                // Ovdje možete manipulirati podacima iz odgovora (response) i ažurirati vaše HTML elemente
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                console.log(error);
-            }
-        });
-    });
-});
-</script>
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Northwind</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,17 +68,13 @@
             <div class="pull-right mb-2">
                 <a class="btn btn-primary" href="{{ route('region.create') }}">Add new Region</a>
             </div>
-            <div class="pull-right mb-2">
-              
-                <select id="regionSelect" class="form-control">
-                    <option value="">Odaberite regiju</option>
-                    @foreach ($regions as $region)
-                        <option value="{{ $region->RegionID }}">{{ $region->RegionDescription }}</option>
-                    @endforeach
-                 </select>
-            </div>
         </div>
     </div>
+    <div class="row">
+            <div class="col-md-6">
+                 <input type="text" name="searchInput" id="searchInput" class="form-control" placeholder="Search by Region Description">
+            </div>
+    </div>  
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -116,23 +88,62 @@
             <th width="230px">Action</th>
         </tr>
         </thead>
-        <tbody>
-        @foreach ($regions as $region)
-            <tr>
-                <td>{{ $region->RegionID }}</td>
-                <td>{{ $region->RegionDescription }}</td>
-                <td>
-                    <form action="{{ route('region.destroy',$region->RegionID) }}" method="Post">
-                        <a class="btn btn-primary"href="{{ route('region.edit',$region->RegionID) }}">Edit</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
+        <tbody id="searchResults">
+            @foreach ($regions as $region)
+                <tr>
+                    <td>{{ $region->RegionID }}</td>
+                    <td>{{ $region->RegionDescription }}</td>
+                    <td>
+                        <form action="{{ route('region.destroy',$region->RegionID) }}" method="Post">
+                            <a class="btn btn-primary" href="{{ route('region.edit',$region->RegionID) }}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    var searchInput = document.getElementById('searchInput');
+    var searchResults = document.getElementById('searchResults');
+    searchInput.addEventListener('keyup', function () {
+        var query = this.value;
+        axios.get('{{ route('search') }}', {
+            params: {
+                query: query
+            }
+        })
+        .then(function (response) {
+            var results = response.data;
+            var output = '';
+            if (results.length === 0) {
+                output = '<tr><td colspan="6">No regions found with that name.</td></tr>';
+            } else {
+                results.forEach(function (result) {
+                    output += '<tr>';
+                    output += '<td>' + result.RegionID + '</td>';
+                    output += '<td>' + result.RegionDescription + '</td>';
+                    output += '<td>';
+                    output += '<form action="' + result.delete_route + '" method="Post">';
+                    /*output += '<a class="btn btn-primary" href="' + result.edit_route + '">Edit</a>';*/
+                    output += '@csrf';
+                    /*output += '@method('DELETE')';
+                    output += '<button type="submit" class="btn btn-danger">Delete</button>';*/
+                    output += '</form>';
+                    output += '</td>';
+                    output += '</tr>';
+                });
+            }
+            searchResults.innerHTML = output;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    });
+</script>
 </body>
 </html>

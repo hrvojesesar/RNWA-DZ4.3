@@ -44,7 +44,7 @@ Route::resource('orderDetails', OrderDetailController::class);
 Route::resource('employee', EmployeeController::class);
 Route::resource('customer_customer_demos', CustomerCustomerDemoController::class);
 Route::resource('employee_territories', EmployeeTerritoryController::class);
-Route::post('/region/{id}', [RegionController::class, 'getRegion'])->name('region.get');
+Route::get('/search', [RegionController::class, 'search'])->name('search');
 Route::get('/customers/search', [CustomerSearchController::class, 'search'])->name('customers.search');
 Route::get('/shipperCRUD', [ShipperCRUDController::class, 'index'])->name('shipper.index');
 Route::get('/shipperCRUD/{id}', [ShipperCRUDController::class, 'show'])->name('shipper.show');
