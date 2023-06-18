@@ -5,4 +5,5 @@ If you want to run our Laravel application, you must complete the following step
 3. In .env file configure DB_DATABASE=northwind
 4. Run composer install
 5. Run php artisan key:generate
-6. Run php artisan serve
+6. Run php artisan migrate
+7. Run php artisan serve
