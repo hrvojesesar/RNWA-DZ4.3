@@ -16,6 +16,7 @@ use App\Http\Controllers\CustomerCustomerDemoController;
 use App\Http\Controllers\EmployeeTerritoryController;
 use App\Http\Controllers\CustomerSearchController;
 use App\Http\Controllers\ShipperCRUDController;
+use App\Http\Controllers\API\SocialAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,9 @@ use App\Http\Controllers\ShipperCRUDController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login-google', [SocialAuthController::class, 'redirectToProvider'])->name('google.login');
+Route::get('/auth/google/callback', [SocialAuthController::class, 'handleCallback'])->name('google.login.callback');
 
 Route::resource('region', RegionController::class);
 Route::resource('territory', TerritoryController::class);
@@ -52,3 +56,7 @@ Route::get('/action', [TerritoryController::class, 'action'])->name('action');
 Route::post('/shipperCRUD', [ShipperCRUDController::class, 'store'])->name('shipper.store');
 Route::put('/shipperCRUD/{id}', [ShipperCRUDController::class, 'update'])->name('shipper.update');
 Route::delete('/shipperCRUD/{id}', [ShipperCRUDController::class, 'destroy'])->name('shipper.destroy');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
